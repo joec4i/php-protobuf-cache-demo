@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package v1;
+
+option php_namespace = "TestProto";
+
+message TestMessage {
+  string name = 1;
+}

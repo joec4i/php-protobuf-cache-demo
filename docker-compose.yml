@@ -1,0 +1,17 @@
+services:
+  php:
+    build: ./docker/php
+    volumes:
+      - ./src:/var/www/html/src
+      - ./proto:/var/www/html/proto
+      - ./public:/var/www/html/public
+    working_dir: /var/www/html
+  web:
+    image: nginx:alpine
+    ports:
+      - "8880:80"
+    volumes:
+      - ./public:/var/www/html/public
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
